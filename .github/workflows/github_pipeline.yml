@@ -1,0 +1,30 @@
+name: GitHub Credit Scoring CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-test-clean:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: |
+          echo "Building on GitHub VM..."
+          docker build -t credit-scoring-ci-test .
+
+      - name: Run Pytest
+        run: docker run --name scoring-test-runner credit-scoring-ci-test
+
+      - name: Quality Gate - Clean Up
+        if: always()
+        run: |
+          echo "Running clean up on GitHub..."
+          docker rm -f scoring-test-runner || true
+          docker rmi -f credit-scoring-ci-test || true
+          docker system prune -f
+          echo "GitHub runner disk space reclaimed."

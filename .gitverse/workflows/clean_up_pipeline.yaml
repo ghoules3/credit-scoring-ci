@@ -1,0 +1,26 @@
+name: Credit Scoring CI with Clean Up
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-test-and-clean:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: docker build -t credit-scoring-ci-test .
+
+      - name: Run Tests in Container
+        run: docker run --name scoring-test-runner credit-scoring-ci-test
+
+      - name: Quality Gate - Clean Up Resources
+        if: always()
+        run: |
+          docker rm -f scoring-test-runner || true
+          docker rmi -f credit-scoring-ci-test || true
+          docker system prune -f

@@ -72,7 +72,7 @@ pytest==7.4.3
 
 ## Локальная проверка  
 Перед публикацией в облачные CI/CD-системы проект был проверен локально:  
-###Проверка unit-тестов  
+### Проверка unit-тестов  
 ```Bash  
 pytest -v
 ```
@@ -81,12 +81,12 @@ pytest -v
 -найдено 4 теста  
 -все тесты успешно пройдены  
   
-###Сборка Docker-образа  
+### Сборка Docker-образа  
 ```Bash  
 docker build -t credit-scoring-ci-test .
 ```
   
-###Запуск контейнера с тестами  
+### Запуск контейнера с тестами  
 ```Bash   
 docker run --rm credit-scoring-ci-test
 ```
@@ -162,7 +162,7 @@ if: always()
 -получен финальный зелёный запуск  
   
 ## Сравнительный анализ GitVerse и GitHub  
-###GitVerse
+### GitVerse
 -pipeline запускается  
 -checkout работает  
 -Docker build недоступен  

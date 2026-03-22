@@ -215,16 +215,12 @@ docs/
 ## Ссылки  
 ### GitHub  
 Основной репозиторий проекта:  
-```text  
-https://github.com/ghoules3/credit-scoring-ci
-```
+https://github.com/ghoules3/credit-scoring-ci  
   
 ### GitVerse  
 Репозиторий для демонстрации запуска pipeline в GitVerse:  
-```text  
-https://gitverse.ru/ghoules3/credit-scoring-ci
-```
-
+https://gitverse.ru/ghoules3/credit-scoring-ci  
+  
 ## Вывод  
 В лабораторной работе реализован CI/CD-конвейер для мини-проекта кредитного скоринга.  
 Настроены пайплайны для GitVerse и GitHub, выполнена автоматическая сборка Docker-образа, запуск unit-тестов и очистка ресурсов после завершения pipeline.  
